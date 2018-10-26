@@ -1,2 +1,1 @@
-# Baseline-Economy
-Lengnick's Baseline Economy
+# `Baseline-Economy` Lengnick's Baseline Economy model

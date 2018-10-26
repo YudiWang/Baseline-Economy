@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale = 1.0" />
+ <title>Lengnick's Baseline Economy Model</title>
+ <style>
+   html { font-family: sans-serif;}
+   #sim4eduinfo { font-size: 90%;}
+   body > header > h1 {
+     font-size: 2em;
+     margin: 0.67em 0;
+     margin-top: 0.2em;
+   }
+   noscript > p { font-size: 1.2em; color: red;}
+</style>
+ <!-- Load polyfills for supporting >=IE9 -->
+ <script src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.from,Array.prototype.find,Array.prototype.includes,DOMTokenList,Element.prototype.after,Element.prototype.before,Element.prototype.classList,Element.prototype.cloneNode,Number.isInteger,Object.keys,Object.values,Promise,String.prototype.includes,console.log,fetch,&flags=gated" defer async></script>
+</head>
+<body>
+ <div id="frontMatter">
+  <header>
+   <p id="sim4eduinfo">Created with the <i>Object Event Simulation (OES)</i>
+    framework <b><i>OESjs</i></b> available from <a href='https://sim4edu.com'>sim4edu.com</a>.
+   </p>
+  </header>
+  <h1>Lengnick's Baseline Economy</h1>
+ </div>
+ <main>
+  <div id='model-menu'>
+   <button type='button' onclick='oes.ui.showNarrative()'>Narrative</button>
+   <button type='button' onclick='oes.ui.showDescription()'>Description</button>
+   <button id='showCodeBtn' type='button' onclick='oes.ui.showCode()'>Code</button>
+  </div>
+ </main>
+
+ <noscript>
+  <p>Please turn on JavaScript in your browser. Otherwise you cannot run the simulator.</p>
+ </noscript>
+ <script src="../loadManager.js"></script>
+</body>
+</html>
