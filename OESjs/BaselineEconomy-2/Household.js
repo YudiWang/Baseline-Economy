@@ -35,10 +35,15 @@ var Household = new cLASS( {
       label: "Liquidity"
       // shortLabel: "mH"
     },
-    "expenditure": {
+    "minExpenditure": {
       range: "PositiveDecimal",
-      label: "Consumption expenditure",
-      //shortLabel: "ce"
+      label: "Minimum consumption expenditure",
+      //shortLabel: "mine"
+    },
+    "maxExpenditure": {
+      range: "PositiveDecimal",
+      label: "Maximum consumption expenditure",
+      //shortLabel: "maxe"
     },
     "dailyDemand": {
       range: "PositiveDecimal",
@@ -272,7 +277,8 @@ var Household = new cLASS( {
       // Calculate the monthly consumption with savings normalized to 0
       // Page 7, Eq. (12)
       m = Math.max( this.money, 0 ) / pI;
-      c = Math.min( Math.pow( m, this.expenditure ), m );
+      c = Math.min( Math.pow( m,
+        rand.uniform( this.minExpenditure, this.maxExpenditure ), m ) );
 
       // Equal consumption each day of the month
       this.dailyDemand = c / daysMonth;
@@ -377,7 +383,7 @@ Household.beta = 5;
 Household.pi = 0.1;
 
 // Decay rate for the consumption expenditure increase
-Household.alpha = 0.9;
+// Household.alpha = 0.9;
 
 // Probability of replacing a Firm because of its high price
 Household.psiPrice = 0.25;

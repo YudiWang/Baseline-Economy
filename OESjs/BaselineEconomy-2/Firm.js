@@ -44,6 +44,11 @@ var Firm = new cLASS( {
       maxCard: Infinity
       // shortLabel: "workers"
     },
+    "productivity": {
+      range: "PositiveDecimal",
+      label: "Worker productivity"
+      // shortLabel: "wP"
+    },
     "wageRate": {
       range: "PositiveDecimal",
       label: "Wage rate"
@@ -135,7 +140,7 @@ var Firm = new cLASS( {
       var lIF = Firm.lPhi * this.demand;
 
       // Calculate the upper and lower bar for prices
-      var marginalCost = this.wageRate / daysMonth / Firm.lambda;
+      var marginalCost = this.wageRate / daysMonth / this.productivity;
       var uPF = Firm.uphi * marginalCost;
       var lPF = Firm.lphi * marginalCost;
 
@@ -212,7 +217,7 @@ var Firm = new cLASS( {
      */
     "produceConsumptionGoods": function () {
       // Increase the inventory
-      this.inventoryLevel += ( Firm.lambda * this.workers.length );
+      this.inventoryLevel += ( this.productivity * this.workers.length );
     },
 
     /**
@@ -331,7 +336,7 @@ Firm.lphi = 1.025;
 Firm.theta = 0.75;
 
 // Technology parameter
-Firm.lambda = 3;
+// Firm.lambda = 2.7;
 
 // Percentage defining the amount to reserve for bad times
 Firm.chi = 0.1;

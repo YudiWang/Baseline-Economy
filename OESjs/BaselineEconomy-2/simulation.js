@@ -59,13 +59,27 @@ sim.model.v.initialAmountPerHousehold = {
   label: "Initial amount / househ.",
   hint: "The initial liquidity per household"
 };
-sim.model.v.expenditure = {
+sim.model.v.minExpenditure = {
   range: "Decimal",
-  initialValue: 0.9,
+  initialValue: 0.87,
   decimalPlaces: 2,
-  label: "Consumption expenditure",
-  hint: "Decay rate for the increase of consumption expenditure"
-}
+  label: "Minimum expenditure",
+  hint: "Minimum decay rate for the consumption expenditure"
+};
+sim.model.v.maxExpenditure = {
+  range: "Decimal",
+  initialValue: 0.94,
+  decimalPlaces: 2,
+  label: "Maximum expenditure",
+  hint: "Maximum decay rate for the consumption expenditure"
+};
+sim.model.v.productivity = {
+  range: "Decimal",
+  initialValue: 3,
+  decimalPlaces: 2,
+  label: "Worker productivity",
+  hint: "Productivity of workers"
+};
 
 sim.scenario.initialState.events = [
     {typeName: "StartOfMonth", occTime: 1},
@@ -95,6 +109,7 @@ sim.scenario.setupInitialState = function () {
       consumptionGoodPrice: 1 * ( ( rand.uniform( 0, 1 ) - 0.5 ) / 50 + 1 ),
       demand: 0,
       workers: [],
+      productivity: sim.v.productivity,
       wageRate: 52 * ( ( rand.uniform( 0, 1 ) - 0.5 ) / 50 + 1 ),
       openPosition: false,
       filledPosition: false,
@@ -139,7 +154,8 @@ sim.scenario.setupInitialState = function () {
       reservationWage: 0,
       receivedWage: 52,
       money: sim.v.initialAmountPerHousehold,
-      expenditure: sim.v.expenditure,
+      minExpenditure: sim.v.minExpenditure,
+      maxExpenditure: sim.v.maxExpenditure,
       dailyDemand: 0,
       preferredSuppliers: prefSuppliers.clone(),
       blacklistedSuppliers: {}
