@@ -38,7 +38,7 @@ var StartOfMonth = new cLASS( {
           firm.adjustJobPositions( sim.v.month );
 
           // Adjust consumption goods price
-          firm.adjustConsumptionGoodPrice( sim.v.daysOfMonth );
+          firm.adjustConsumptionGoodsPrice( sim.v.daysOfMonth );
 
           // Reset monthly demand
           firm.resetMonthDemand();

@@ -134,7 +134,7 @@ var Firm = new cLASS( {
      * @param daysMonth
      *          Number of days in a month
      */
-    "adjustConsumptionGoodPrice": function ( daysMonth ) {
+    "adjustConsumptionGoodsPrice": function ( daysMonth ) {
       // Calculate the upper and lower bar for inventories
       var uIF = Firm.uPhi * this.demand;
       var lIF = Firm.lPhi * this.demand;
@@ -189,17 +189,6 @@ var Firm = new cLASS( {
     },
 
     /**
-     * @description Remove a worker from the workforce
-     * @param worker
-     *          Household worker being fired
-     */
-    "fire": function ( worker ) {
-      this.workers.splice( this.workers.indexOf( worker ), 1 );
-      worker.fired();
-      this.closePosition = false;
-    },
-
-    /**
      * @description Consider firing a worker
      */
     "decideFireWorker": function () {
@@ -207,7 +196,8 @@ var Firm = new cLASS( {
 
       if ( this.closePosition && ( this.workers.length > 1 ) ) {
         worker = this.workers[ rand.uniformInt( 0, this.workers.length - 1 ) ];
-        this.fire( worker );
+        this.workers.splice( this.workers.indexOf( worker ), 1 );
+        worker.fired();
       }
       this.closePosition = false;
     },
@@ -270,7 +260,7 @@ var Firm = new cLASS( {
      * @description Distribute profit among all Households proportional to
      *              their liquidity
      */
-    "distributeProfits": function () {
+    "distributeProfit": function () {
       var profit, total, iHHs, hh;
 
       // Money available to distribute, profit

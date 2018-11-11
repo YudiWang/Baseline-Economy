@@ -28,7 +28,7 @@ var EndOfMonth = new cLASS( {
         // Decide the reserve for bad times
         firm.decideReserve();
         // Distribute the profit
-        firm.distributeProfits();
+        firm.distributeProfit();
       } );
 
       Object.keys( iFirms ).forEach( function ( objId ) {
