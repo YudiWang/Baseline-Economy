@@ -82,9 +82,9 @@ sim.model.v.productivity = {
 };
 
 sim.scenario.initialState.events = [
-    {typeName: "StartOfMonth", occTime: 1},
-    {typeName: "EachDay", occTime: 1},
-    {typeName: "EndOfMonth", occTime: 21}
+  { typeName: "StartOfMonth", occTime: 1 },
+  { typeName: "EachDay", occTime: 1 },
+  { typeName: "EndOfMonth", occTime: 21 }
 ];
 /*******************************************************************************
  * Define Initial State
@@ -201,20 +201,20 @@ sim.model.statistics = {
   // }
   // },
   // "inventoryLevel": {
-  // range: "PositiveDecimal",
-  // label: "Average Inventory",
-  // initialValue: 0,
-  // showTimeSeries: true,
-  // computeOnlyAtEnd: false,
-  // expression: function () {
-  // var total = 0;
-  // var firms = cLASS["Firm"].instances;
-  // Object.keys( firms ).forEach( function ( objId ) {
-  // total += firms[objId].inventoryLevel;
-  // } );
-  //
-  // return total / Object.keys( firms ).length;
-  // }
+  //   range: "PositiveDecimal",
+  //   label: "Average Inventory",
+  //   initialValue: 0,
+  //   showTimeSeries: true,
+  //   computeOnlyAtEnd: false,
+  //   expression: function () {
+  //     var total = 0;
+  //     var firms = cLASS[ "Firm" ].instances;
+  //     Object.keys( firms ).forEach( function ( objId ) {
+  //       total += firms[ objId ].inventoryLevel;
+  //     } );
+
+  //     return total / Object.keys( firms ).length;
+  //   }
   // },
   // "workers": {
   // range: "PositiveDecimal",
@@ -232,6 +232,21 @@ sim.model.statistics = {
   // return total / Object.keys( firms ).length;
   // }
   // },
+  "production": {
+    range: "PositiveDecimal",
+    label: "Production",
+    initialValue: 0,
+    showTimeSeries: true,
+    computeOnlyAtEnd: false,
+    expression: function () {
+      var total = 0;
+      var firms = cLASS[ "Firm" ].instances;
+      Object.keys( firms ).forEach( function ( objId ) {
+        total += firms[ objId ].production;
+      } );
+      return total;
+    }
+  },
   "consumptionGoodPrice": {
     range: "PositiveDecimal",
     label: "Average Price",

@@ -49,6 +49,11 @@ var Firm = new cLASS( {
       label: "Worker productivity"
       // shortLabel: "wP"
     },
+    "production": {
+      range: "PositiveDecimal",
+      label: "Daily production"
+      // shortLabel: "dP"
+    },
     "wageRate": {
       range: "PositiveDecimal",
       label: "Wage rate"
@@ -206,8 +211,9 @@ var Firm = new cLASS( {
      * @description Produce products
      */
     "produceConsumptionGoods": function () {
+      this.production = this.productivity * this.workers.length;
       // Increase the inventory
-      this.inventoryLevel += ( this.productivity * this.workers.length );
+      this.inventoryLevel += this.productivity * this.workers.length;
     },
 
     /**
